@@ -1,7 +1,7 @@
-const graphql = require('graphql')
-const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLFloat } = graphql
-const { TransactionModel } = require('../data-models/Transaction')
-const TransactionType = require('./transaction-type')
+const graphql = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLFloat } = graphql;
+const { TransactionModel } = require('../data-models/Transaction');
+const TransactionType = require('./transaction-type');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -17,11 +17,11 @@ const mutation = new GraphQLObjectType({
         amount: { type: GraphQLFloat }
       },
       /* eslint-disable-next-line camelcase */
-      resolve (parentValue, { user_id, description, merchant_id, debit, credit, amount }) {
-        return (new TransactionModel({ user_id, description, merchant_id, debit, credit, amount })).save()
+      resolve(parentValue, { user_id, description, merchant_id, debit, credit, amount }) {
+        return new TransactionModel({ user_id, description, merchant_id, debit, credit, amount }).save();
       }
     }
   }
-})
+});
 
-module.exports = mutation
+module.exports = mutation;
