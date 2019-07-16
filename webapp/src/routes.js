@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { css } from '@emotion/core'
 import { Home } from './home'
+import { TransactionTracker } from './transaction-tracker'
 
 // <nav css={navStyle}>
 //   <ul >
@@ -20,7 +21,7 @@ function AppRouter () {
       <div css={layoutStyle}>
         <div className='main-content' css={contentStyle}>
           <Route component={Home} exact path='/' />
-          <Route component={() => (<div>Content for /another route</div>)} exact path='/another' />
+          <Route component={TransactionTracker} exact path='/transaction' />
         </div>
       </div>
     </Router>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Form from './form'
+import TransactionForm from './transaction-form'
 import Transaction from './transaction'
 
 const CardWrapper = styled.div`
@@ -35,17 +35,17 @@ const GrayDivider = styled.hr`
   margin: 0;
 `
 
-export const Card = () => {
+export const TransactionCard = () => {
   return (
     <CardWrapper>
       <CardBody>
         <CardLabel>Transaction Tracker</CardLabel>
         <GrayDivider />
-        <Form />
+        <TransactionForm />
         <Transaction />
       </CardBody>
     </CardWrapper>
   )
 }
 
-export default Card
+export default TransactionCard

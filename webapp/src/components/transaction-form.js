@@ -40,6 +40,26 @@ const Input = styled.input`
   margin-top: 4px;
 `
 
+const RadioWrapper = styled.div`
+  display: flex;
+  width: 200px;
+`
+
+const RadioLabel = styled(Label)`
+  width: 50%;
+`
+
+const FlexDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+const SelectLabel = styled(Label)`
+  @media (min-width: 750px) {
+    margin-left: 24px;
+  }
+`
+
 const Chevron = styled.div`
   border: 3px solid #70727B;
   border-left-color: transparent;
@@ -76,17 +96,17 @@ const Button = styled.input`
   padding: 8px;
   appearance: none;
   width: 200px;
-  background-color: #00BB8B;
+  background-color: #0091EA;
   color: white;
   border-radius: 4px;
   border-style: none;
   margin-top: 8px;
 `
 
-export const Form = () => {
+export const TransactionForm = () => {
   return (
     <FormBody>
-      <FormTitle>Enter Transaction:</FormTitle>
+      <FormTitle>Transaction Information:</FormTitle>
       <InputWrapper>
         <Label>Date
           <Input type='date' />
@@ -94,25 +114,35 @@ export const Form = () => {
         <Label>Amount
           <Input min='0.01' prefix={'$'} step='0.01' type='number' />
         </Label>
-        <Label>Merchant
-          <Input type='text' />
-        </Label>
-        <Label>Category
-          <Chevron />
-          <Select>
-            <option value='gas'>Gas</option>
-            <option value='groceries'>Groceries</option>
-            <option value='healthCare'>Health Care</option>
-            <option value='pet'>Pet</option>
-            <option value='restaurant'>Restaurant</option>
-            <option value='shopping'>Shopping</option>
-            <option value='miscellaneous'>Miscellaneous</option>
-          </Select>
-        </Label>
+        <RadioWrapper>
+          <RadioLabel>Credit
+            <Input name='type' type='radio' value='Credit' />
+          </RadioLabel>
+          <RadioLabel>Debit
+            <Input name='type' type='radio' value='Debit' />
+          </RadioLabel>
+        </RadioWrapper>
+        <FlexDiv>
+          <Label>Merchant
+            <Input type='text' />
+          </Label>
+          <SelectLabel>Category
+            <Chevron />
+            <Select>
+              <option value='gas'>Gas</option>
+              <option value='groceries'>Groceries</option>
+              <option value='healthCare'>Health Care</option>
+              <option value='pet'>Pet</option>
+              <option value='restaurant'>Restaurant</option>
+              <option value='shopping'>Shopping</option>
+              <option value='miscellaneous'>Miscellaneous</option>
+            </Select>
+          </SelectLabel>
+        </FlexDiv>
       </InputWrapper>
       <Button type='submit' value='Enter Transaction' />
     </FormBody>
   )
 }
 
-export default Form
+export default TransactionForm
