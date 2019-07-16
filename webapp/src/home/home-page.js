@@ -6,24 +6,42 @@ export const Home = () => {
   const [hasError, setErrors] = useState(false);
   const [data, setData] = useState({ data: [] })
 
-  useEffect(
-    fetch('http://localhost:8000/graphql', {
-      method: 'POST',
-      body: {
-        query: `
-          mutation {
-            addUser: {
-              dob: String
-              firstName: String
-              lastName: String
-            }
-          }
-        `
-      }
-    }).then(function(response) {
+  // const query = `
+  //   query {
+  //     mutation {
+  //       addUser: {
+  //         dob: String
+  //         firstName: String
+  //         lastName: String
+  //       }
+  //     }
+  //   }
+  // `
 
-    }).catch(() => this.setState({ hasErrors: true }))
-  )
+  const mutation = `
+    mutation {
+      addUser: {
+        dob: String
+        firstName: String
+        lastName: String
+      }
+    }
+  `
+
+  const url = 'http://localhost:8000/graphql'
+
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: mutation })
+  }
+
+  useEffect(() => {
+    fetch(url, options)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(console.error)
+  }, [])
 
   return (
     <Fragment>

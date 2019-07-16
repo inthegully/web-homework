@@ -7,6 +7,7 @@ const httpErrors = require('http-errors')
 const path = require('path')
 const pino = require('pino')
 const pinoHttp = require('pino-http')
+var cors = require('cors')
 
 module.exports = function main (options, cb) {
   // Set default options
@@ -59,6 +60,7 @@ module.exports = function main (options, cb) {
 
   // Create the express app
   const app = express()
+  app.use(cors())
 
   app.use(express.static(path.join(__dirname, 'public')))
 
