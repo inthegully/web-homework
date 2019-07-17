@@ -4,17 +4,6 @@ import { css } from '@emotion/core'
 import { Home } from './home'
 import { TransactionTracker } from './transaction-tracker'
 
-// <nav css={navStyle}>
-//   <ul >
-//     <li>
-//       <Link to='/'>Home</Link>
-//     </li>
-//     <li>
-//       <Link to='/another'>Another route</Link>
-//     </li>
-//   </ul>
-// </nav>
-
 function AppRouter () {
   return (
     <Router>
@@ -36,20 +25,6 @@ const layoutStyle = css`
     width: 100%;
     height: 100vh;
 `
-
-// const navStyle = css`
-//   grid-row: 1;
-//
-//   & > ul {
-//       display: flex;
-//       flex-direction: row;
-//       list-style-type: none;
-//   }
-//
-//   & > ul > li:not(:first-child) {
-//     margin-left: 16px;
-//   }
-// `
 
 const contentStyle = css`
   grid-row: 2;
